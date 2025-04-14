@@ -1,0 +1,3 @@
+/mnt/d/Programming/Cpp/learning/build/CMakeFiles/FrontEnd.dir
+/mnt/d/Programming/Cpp/learning/build/CMakeFiles/edit_cache.dir
+/mnt/d/Programming/Cpp/learning/build/CMakeFiles/rebuild_cache.dir
