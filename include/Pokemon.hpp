@@ -15,7 +15,7 @@ class Pokemon {
         std::vector<Type> resistance;
 
     public:
-        Pokemon(std::string name, Type type1, Type type2, int hp, std::string attack_name,int attack) : name(name), type1(type1), type2(type2), hp(hp), attack_name(attack_name),attack_power(attack){}
+        Pokemon(std::string name, Type type1, Type type2, int hp, std::string attack_name,int attack);
 
         //Getters
         std::vector<Type> get_type() const {return {type1, type2};};

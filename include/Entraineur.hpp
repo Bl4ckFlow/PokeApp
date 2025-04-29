@@ -10,33 +10,37 @@ class Tamer{
 
 
     public :
-        Tamer(std::string name, std::vector<Pokemon> liste): name(name), liste_pokemon(liste){};
+        Tamer(std::string name, std::vector<Pokemon> liste);
+        Tamer(std::string name);
 
+        std::string getName();
+        std::vector<Pokemon> getPokeList();
+
+        void setName(std::string name);
+        void setPokeList(std::vector<Pokemon> poke_list);
 };
 
-class Player : Tamer{
+class Player : public Tamer{
     private : 
         int nombre_badges;
         int nombre_combats_gagnes;
         int nombre_combats_perdus;
 
     public : 
+        Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu);
+
 };
 
-class GymLeader : Tamer{
+class GymLeader : public Tamer{
     private : 
-        int nombre_badges;
-        int nombre_combats_gagnes;
-        int nombre_combats_perdus;
-
+        std::string badge;
+        std::string gymnase;
+        
     public : 
+        GymLeader(std::string name, std::string badge, std::string gymnase, std::string pokemon1, std::string pokemon2, std::string pokemon3, std::string pokemon4, std::string pokemon5, std::string pokemon6, std::vector<Pokemon> poke_list);
 };
 
-class MasterTamer : Tamer{
-    private : 
-        int nombre_badges;
-        int nombre_combats_gagnes;
-        int nombre_combats_perdus;
-
+class MasterTamer : public Tamer{
     public : 
+        MasterTamer(std::string name, std::string pokemon1, std::string pokemon2, std::string pokemon3, std::string pokemon4, std::string pokemon5, std::string pokemon6, std::vector<Pokemon> poke_list) ;
 };

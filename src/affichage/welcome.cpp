@@ -20,9 +20,9 @@ Component CreateWelcomeScreen(std::function<void()> onEnterPressed) {
                     filler()
                 }),
                 filler()
-            });
+            }) ;
         })
-    });
+    })| vcenter;
     
 
     welcome_component |= CatchEvent([onEnterPressed](Event event) {

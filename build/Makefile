@@ -129,6 +129,78 @@ FrontEnd/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/build
 .PHONY : FrontEnd/fast
 
+src/implementation/Entraineur.o: src/implementation/Entraineur.cpp.o
+.PHONY : src/implementation/Entraineur.o
+
+# target to build an object file
+src/implementation/Entraineur.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o
+.PHONY : src/implementation/Entraineur.cpp.o
+
+src/implementation/Entraineur.i: src/implementation/Entraineur.cpp.i
+.PHONY : src/implementation/Entraineur.i
+
+# target to preprocess a source file
+src/implementation/Entraineur.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.i
+.PHONY : src/implementation/Entraineur.cpp.i
+
+src/implementation/Entraineur.s: src/implementation/Entraineur.cpp.s
+.PHONY : src/implementation/Entraineur.s
+
+# target to generate assembly for a file
+src/implementation/Entraineur.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.s
+.PHONY : src/implementation/Entraineur.cpp.s
+
+src/implementation/Pokemon.o: src/implementation/Pokemon.cpp.o
+.PHONY : src/implementation/Pokemon.o
+
+# target to build an object file
+src/implementation/Pokemon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o
+.PHONY : src/implementation/Pokemon.cpp.o
+
+src/implementation/Pokemon.i: src/implementation/Pokemon.cpp.i
+.PHONY : src/implementation/Pokemon.i
+
+# target to preprocess a source file
+src/implementation/Pokemon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.i
+.PHONY : src/implementation/Pokemon.cpp.i
+
+src/implementation/Pokemon.s: src/implementation/Pokemon.cpp.s
+.PHONY : src/implementation/Pokemon.s
+
+# target to generate assembly for a file
+src/implementation/Pokemon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.s
+.PHONY : src/implementation/Pokemon.cpp.s
+
+src/implementation/Type.o: src/implementation/Type.cpp.o
+.PHONY : src/implementation/Type.o
+
+# target to build an object file
+src/implementation/Type.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Type.cpp.o
+.PHONY : src/implementation/Type.cpp.o
+
+src/implementation/Type.i: src/implementation/Type.cpp.i
+.PHONY : src/implementation/Type.i
+
+# target to preprocess a source file
+src/implementation/Type.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Type.cpp.i
+.PHONY : src/implementation/Type.cpp.i
+
+src/implementation/Type.s: src/implementation/Type.cpp.s
+.PHONY : src/implementation/Type.s
+
+# target to generate assembly for a file
+src/implementation/Type.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FrontEnd.dir/build.make CMakeFiles/FrontEnd.dir/src/implementation/Type.cpp.s
+.PHONY : src/implementation/Type.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +234,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... FrontEnd"
+	@echo "... src/implementation/Entraineur.o"
+	@echo "... src/implementation/Entraineur.i"
+	@echo "... src/implementation/Entraineur.s"
+	@echo "... src/implementation/Pokemon.o"
+	@echo "... src/implementation/Pokemon.i"
+	@echo "... src/implementation/Pokemon.s"
+	@echo "... src/implementation/Type.o"
+	@echo "... src/implementation/Type.i"
+	@echo "... src/implementation/Type.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
