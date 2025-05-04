@@ -18,15 +18,23 @@ class Pokemon {
         Pokemon(std::string name, Type type1, Type type2, int hp, std::string attack_name,int attack);
 
         //Getters
-        std::vector<Type> get_type() const {return {type1, type2};};
-        std::vector<Type> get_weakness() const ;
-        int get_hp() const { return hp; }
-        float get_attack_power() const { return attack_power; }
-        std::string get_attack_name() const { return attack_name; }
-        std::string get_name() const { return name; }
+        std::vector<Type> get_type() const;
+        std::vector<Type> get_weakness() const;
+        std::vector<Type> get_resistance() const;
+        int get_hp() const;
+        float get_attack_power() const;
+        std::string get_attack_name() const;
+        std::string get_name() const;
+
+        //Setters
+        void set_hp(int val);
 
         //Methods
-        std::string stringify() {return "name: " + name + ", Type1: " + typeToString(type1) + ", Type2: " + typeToString(type2) + ", AP: "+ std::to_string(attack_power) + ", Attack Name: " + attack_name + ", HP: " + std::to_string(hp) ;}
+        std::string stringify();
+        void attack(Pokemon& p);
+
+        //virtual void version
+
 };
 
 /*
@@ -133,4 +141,4 @@ class FairyPokemon : public Pokemon {
 };
 */
     
-//bool CheckCompatibility(const Pokemon& p1,const Pokemon& p2){};
+int CheckCompatibility(const Pokemon& p1,const Pokemon& p2);

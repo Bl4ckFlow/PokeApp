@@ -56,10 +56,12 @@ std::vector<GymLeader> LoadGymLeaderFromCSV(const std::string& filename, std::ve
     std::getline(file, line);
 
     while (std::getline(file, line)) {
+        
         std::stringstream ss(line);
         std::string name, gymnase = "", badge = "", pokemon1 = "", pokemon2 = "", pokemon3 = "", pokemon4 = "", pokemon5 = "", pokemon6 = "";
 
         std::getline(ss, name, ',');
+        std::getline(ss, badge, ',');
         std::getline(ss, gymnase, ',');
         std::getline(ss, pokemon1, ',');
         std::getline(ss, pokemon2, ',');
@@ -68,8 +70,7 @@ std::vector<GymLeader> LoadGymLeaderFromCSV(const std::string& filename, std::ve
         std::getline(ss, pokemon5, ',');
         std::getline(ss, pokemon6, '\n');
 
-
-        GymLeader g(name, gymnase, badge, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, poke_list);
+        GymLeader g(name, badge, gymnase, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, poke_list);
 
         gymlead.push_back(g);
     }
@@ -91,7 +92,7 @@ std::vector<MasterTamer> LoadMasterTamerFromCSV(const std::string& filename, std
 
     while (std::getline(file, line)) {
         std::stringstream ss(line);
-        std::string name, gymnase = "", badge = "", pokemon1 = "", pokemon2 = "", pokemon3 = "", pokemon4 = "", pokemon5 = "", pokemon6 = "";
+        std::string name, pokemon1 = "", pokemon2 = "", pokemon3 = "", pokemon4 = "", pokemon5 = "", pokemon6 = "";
 
         std::getline(ss, name, ',');
         std::getline(ss, pokemon1, ',');

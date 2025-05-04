@@ -1,4 +1,5 @@
 #include "../../include/Entraineur.hpp"
+#include <algorithm> 
 
 Tamer::Tamer(std::string name, std::vector<Pokemon> liste): name(name), liste_pokemon(liste){};
 
@@ -10,9 +11,31 @@ void Tamer::setPokeList(std::vector<Pokemon> pokelist){
     liste_pokemon = pokelist;
 };
 
-std::vector<Pokemon> Tamer::getPokeList(){ return liste_pokemon;}
+std::vector<Pokemon>& Tamer::getPokeList() { return liste_pokemon; }
+const std::vector<Pokemon>& Tamer::getPokeList() const { return liste_pokemon; }
 
-std::string Tamer::getName(){return name;}
+std::string Tamer::getName() const {return name;}
+
+int Tamer::getSelectedPokemonIndex() {
+    return selected_pokemon_index;
+}
+
+void Tamer::setSelectedPokemonIndex(int index) {
+    selected_pokemon_index = index;
+}
+
+bool Tamer::checkhp(){
+    int counter =0;
+    for(Pokemon p : liste_pokemon){
+        if(p.get_hp() == 0){
+            counter++;
+        }
+    }
+    if(counter == liste_pokemon.size()- 1){
+        return true;
+    }
+    return false;
+}
 
 //Player
 Player::Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu) : Tamer(name, liste), nombre_badges(nb), nombre_combats_gagnes(ncombat_gagnes), nombre_combats_perdus(ncombat_perdu){};
@@ -29,6 +52,10 @@ GymLeader::GymLeader(std::string name, std::string badge, std::string gymnase, s
     }
     this->setPokeList(customized_pokelist);
 };
+
+std::string GymLeader::getBadge() const {return badge;}
+
+std::string GymLeader::getGymnase() const {return gymnase;}
 
 
 //MasterTamer

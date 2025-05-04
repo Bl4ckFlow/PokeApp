@@ -7,17 +7,23 @@ class Tamer{
     private :
         std::string name;
         std::vector<Pokemon> liste_pokemon;
+        int selected_pokemon_index = 0;
 
 
     public :
         Tamer(std::string name, std::vector<Pokemon> liste);
         Tamer(std::string name);
 
-        std::string getName();
-        std::vector<Pokemon> getPokeList();
+        std::string getName() const;
+        std::vector<Pokemon>& getPokeList();
+        const std::vector<Pokemon>& getPokeList() const;
 
         void setName(std::string name);
         void setPokeList(std::vector<Pokemon> poke_list);
+
+        int getSelectedPokemonIndex();
+        void setSelectedPokemonIndex(int index);
+        bool checkhp();
 };
 
 class Player : public Tamer{
@@ -38,6 +44,8 @@ class GymLeader : public Tamer{
         
     public : 
         GymLeader(std::string name, std::string badge, std::string gymnase, std::string pokemon1, std::string pokemon2, std::string pokemon3, std::string pokemon4, std::string pokemon5, std::string pokemon6, std::vector<Pokemon> poke_list);
+        std::string getBadge() const;
+        std::string getGymnase() const;
 };
 
 class MasterTamer : public Tamer{
