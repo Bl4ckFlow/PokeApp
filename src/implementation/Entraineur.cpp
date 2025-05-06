@@ -31,7 +31,7 @@ bool Tamer::checkhp(){
             counter++;
         }
     }
-    if(counter == liste_pokemon.size()- 1){
+    if(counter == liste_pokemon.size()){
         return true;
     }
     return false;
@@ -40,6 +40,18 @@ bool Tamer::checkhp(){
 //Player
 Player::Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu) : Tamer(name, liste), nombre_badges(nb), nombre_combats_gagnes(ncombat_gagnes), nombre_combats_perdus(ncombat_perdu){};
 
+void Player::set_nombre_badges(std::string badge){
+    nombre_badges++;
+    nom_badge.push_back(badge);
+};
+
+void Player::set_nombre_combats_gagnes(int v){
+    nombre_combats_gagnes++;
+};
+
+void Player::set_nombre_combats_perdus(int v){
+    nombre_combats_perdus++;
+};
 
 //Gymleader
 GymLeader::GymLeader(std::string name, std::string badge, std::string gymnase, std::string pokemon1, std::string pokemon2, std::string pokemon3, std::string pokemon4, std::string pokemon5, std::string pokemon6, std::vector<Pokemon> poke_list) : Tamer(name), gymnase(gymnase), badge(badge) {

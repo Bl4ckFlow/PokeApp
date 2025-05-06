@@ -8,12 +8,6 @@
 
 using namespace ftxui;
 
-/*
-Pokemon Fight(Pokemon& p1, Pokemon& p2){
-    bool turn = true;
-}
-*/
-
 
 Component CreateFightScreen(Player& player,Tamer& opponent, bool& is_player_turn, std::vector<Pokemon>& player_pokemons, std::vector<Pokemon>& opponent_pokemons) {
 
@@ -31,13 +25,13 @@ Component CreateFightScreen(Player& player,Tamer& opponent, bool& is_player_turn
                 attack_details = "Player attacks " + opponent_pokemons[opponent_selected_index].get_name() +
                                 " with " + player_pokemons[player_selected_index].get_name() +
                                 " using " + player_pokemons[player_selected_index].get_attack_name() +
-                                " inflicting " + std::to_string(player_pokemons[player_selected_index].get_attack_power()) + " damage!";
+                                " inflicting " + std::to_string(player_pokemons[player_selected_index].calculate_damage(opponent_pokemons[opponent_selected_index])) + " damage!";
             } else {
                 turn_message = "Opponent's Turn";
                 attack_details = "Opponent attacks " + player_pokemons[player_selected_index].get_name() +
                                 " with " + opponent_pokemons[opponent_selected_index].get_name() +
                                 " using " + opponent_pokemons[opponent_selected_index].get_attack_name() +
-                                " inflicting " + std::to_string(opponent_pokemons[opponent_selected_index].get_attack_power()) + " damage!";
+                                " inflicting " + std::to_string(opponent_pokemons[opponent_selected_index].calculate_damage(player_pokemons[player_selected_index])) + " damage!";
             }
 
 

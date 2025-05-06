@@ -12,6 +12,8 @@ using namespace ftxui;
 std::vector<Pokemon> poke_list = LoadPokemonFromCSV("pokemon.csv");
 std::vector<GymLeader> leader_list = LoadGymLeaderFromCSV("leaders.csv", poke_list);
 std::vector<MasterTamer> master_list = LoadMasterTamerFromCSV("maitres.csv", poke_list);
+
+static int i = 0;
  
 #include <iostream>
 
@@ -44,13 +46,16 @@ int main(void) {
 
     player.setSelectedPokemonIndex(0);
     opponent->setSelectedPokemonIndex(0);
+    std::vector<Pokemon> opponent_pokelist_backup = opponent->getPokeList();
     
     bool is_player_turn = true;
 
     int user_choice;
     auto onKeyPressed = [&](int choice) {
+        GymLeader* opponent  = &leader_list[i];
         user_choice = choice;
         if (choice == 1) {
+
             bool fight_over = false;
             
             while (!fight_over) {
@@ -71,8 +76,21 @@ int main(void) {
                     opponent_pokemons[opponent_index].attack(player_pokemons[player_index]);
                 }
                 
-                //à changer la condition d'arret 
                 if (player.checkhp() || opponent->checkhp()) {
+                    if(opponent->checkhp()){
+                        player.set_nombre_badges(opponent->getBadge());
+                        player.set_nombre_combats_gagnes(1);
+                        player.setPokeList(selected_pokemon);
+                        player.setSelectedPokemonIndex(0);
+                        i++;
+                    }
+                    if(player.checkhp()){
+                        player.set_nombre_combats_perdus(1);
+                        player.setPokeList(selected_pokemon);
+                        player.setSelectedPokemonIndex(0);
+                        opponent->setPokeList(opponent_pokelist_backup);
+                        opponent->setSelectedPokemonIndex(0);
+                    }
                     fight_over = true;
                     break;
                 }
@@ -81,7 +99,7 @@ int main(void) {
                     player.setSelectedPokemonIndex(player_index + 1);
                 }
                 if (opponent_pokemons[opponent_index].get_hp() == 0) {
-                    opponent->setSelectedPokemonIndex(player_index + 1);
+                    opponent->setSelectedPokemonIndex(opponent_index + 1);
                 }
 
                 is_player_turn = !is_player_turn;

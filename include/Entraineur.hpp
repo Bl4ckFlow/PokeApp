@@ -31,9 +31,13 @@ class Player : public Tamer{
         int nombre_badges;
         int nombre_combats_gagnes;
         int nombre_combats_perdus;
+        std::vector<std::string> nom_badge;
 
     public : 
         Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu);
+        void set_nombre_badges(std::string nom_badge);
+        void set_nombre_combats_gagnes(int v);
+        void set_nombre_combats_perdus(int v);
 
 };
 

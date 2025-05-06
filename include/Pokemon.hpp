@@ -32,6 +32,7 @@ class Pokemon {
         //Methods
         std::string stringify();
         void attack(Pokemon& p);
+        int calculate_damage(Pokemon& p);
 
         //virtual void version
 

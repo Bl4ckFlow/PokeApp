@@ -69,6 +69,26 @@ int CheckCompatibility(const Pokemon& p1, const Pokemon& p2) {
     return 0;
 }
 
+int Pokemon::calculate_damage(Pokemon& p){
+    int comp = CheckCompatibility(*this, p);
+
+    if(comp ==  2){
+        return attack_power*1.6;
+    }
+    else if(comp ==  -2){
+        return attack_power*0.8;
+    }
+    else if(comp ==  1){
+        return attack_power*0.5;
+    }
+    else if(comp == -1){
+        return attack_power*2;
+    }
+    else{
+        return attack_power;
+    }    
+}
+
 void Pokemon::attack(Pokemon& p) {
 
     int comp = CheckCompatibility(*this, p);
