@@ -101,6 +101,14 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/linux/sched/types.h /usr/include/linux/types.h \
+ /usr/lib/linux/uapi/x86/asm/types.h /usr/include/asm-generic/types.h \
+ /usr/include/asm-generic/int-ll64.h \
+ /usr/lib/linux/uapi/x86/asm/bitsperlong.h \
+ /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
+ /usr/include/linux/stddef.h /usr/lib/linux/uapi/x86/asm/posix_types.h \
+ /usr/lib/linux/uapi/x86/asm/posix_types_64.h \
+ /usr/include/asm-generic/posix_types.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
@@ -245,6 +253,7 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: \
  /mnt/d/Programming/Cpp/learning/src/./affichage/menuscreen.cpp \
  /mnt/d/Programming/Cpp/learning/src/./affichage/fightscreen.cpp \
  /mnt/d/Programming/Cpp/learning/src/./affichage/../../include/Entraineur.hpp \
+ /mnt/d/Programming/Cpp/learning/src/./affichage/statscreen.cpp \
  /mnt/d/Programming/Cpp/learning/src/./load_func.cpp \
  /usr/include/c++/14/fstream \
  /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \

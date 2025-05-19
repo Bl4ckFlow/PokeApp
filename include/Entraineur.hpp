@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "./Pokemon.hpp"
 
 
@@ -32,6 +33,7 @@ class Player : public Tamer{
         int nombre_combats_gagnes;
         int nombre_combats_perdus;
         std::vector<std::string> nom_badge;
+        std::vector<Pokemon> reserve_pokemon;
 
     public : 
         Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu);
@@ -39,6 +41,11 @@ class Player : public Tamer{
         void set_nombre_combats_gagnes(int v);
         void set_nombre_combats_perdus(int v);
 
+        // Added getters
+        int get_nombre_badges() const;
+        int get_nombre_combats_gagnes() const;
+        int get_nombre_combats_perdus() const;
+        const std::vector<std::string>& get_nom_badge() const;
 };
 
 class GymLeader : public Tamer{

@@ -53,6 +53,23 @@ void Player::set_nombre_combats_perdus(int v){
     nombre_combats_perdus++;
 };
 
+// Added getters for Player class
+int Player::get_nombre_badges() const {
+    return nombre_badges;
+}
+
+int Player::get_nombre_combats_gagnes() const {
+    return nombre_combats_gagnes;
+}
+
+int Player::get_nombre_combats_perdus() const {
+    return nombre_combats_perdus;
+}
+
+const std::vector<std::string>& Player::get_nom_badge() const {
+    return nom_badge;
+}
+
 //Gymleader
 GymLeader::GymLeader(std::string name, std::string badge, std::string gymnase, std::string pokemon1, std::string pokemon2, std::string pokemon3, std::string pokemon4, std::string pokemon5, std::string pokemon6, std::vector<Pokemon> poke_list) : Tamer(name), gymnase(gymnase), badge(badge) {
     std::vector<Pokemon> customized_pokelist;
@@ -81,4 +98,3 @@ MasterTamer::MasterTamer(std::string name, std::string pokemon1, std::string pok
     }
     this->setPokeList(customized_pokelist);
 };
-

@@ -3,6 +3,7 @@
 #include "./affichage/pokedec.cpp"
 #include "./affichage/menuscreen.cpp"
 #include "./affichage/fightscreen.cpp"
+#include "./affichage/statscreen.cpp"
 #include "../include/Entraineur.hpp"
 #include "./load_func.cpp"
 #include <iostream>
@@ -107,7 +108,8 @@ int main(void) {
             }
             screen.Exit();
         } else if (choice == 2) {
-            
+            Component fight_screen = CreateStatScreen(player);
+            screen.Loop(fight_screen);
             screen.Exit();
         } else if (choice == 3) {
             
