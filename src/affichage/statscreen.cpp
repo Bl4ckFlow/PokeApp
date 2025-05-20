@@ -2,26 +2,31 @@
 #include <ftxui/component/component.hpp>
 #include <ftxui/screen/color.hpp>
 #include <ftxui/dom/elements.hpp>
+#include <ftxui/component/event.hpp>
+#include <vector>
+#include <string>
 #include "../../include/Entraineur.hpp"
 
 using namespace ftxui;
 
-Component CreateStatScreen(Player& player) {
-    
+Component CreateStatScreen(Player& player, int& selected_index, char* key){
+
     auto menu_component = Container::Vertical({
-        Renderer([&] {
+        CatchEvent(Renderer([&] {
+            Elements elems;
+            const auto& pokemons = player.getPokeList();
+            for (size_t i = 0; i < pokemons.size(); ++i) {
+                if (static_cast<int>(i) == selected_index) {
+                    elems.push_back(text("> " + pokemons[i].get_name()) | bold | color(Color::Green));
+                } else {
+                    elems.push_back(text("  " + pokemons[i].get_name()));
+                }
+            }
 
             auto player_box = vbox({
                 text(player.getName()) | bold | center,
                 separator(),
-                vbox([&] {
-                    Elements elems;
-                    const auto& player_pokemons = player.getPokeList();
-                    for (size_t i = 0; i < player_pokemons.size(); ++i) {
-                            elems.push_back(text("> " + player_pokemons[i].get_name()) | bold | color(Color::Green));
-                    }
-                    return elems;
-                }())
+                vbox(elems) | border | flex
             }) | border | flex;
 
             // Player's fights won/lost and badges info
@@ -52,7 +57,14 @@ Component CreateStatScreen(Player& player) {
                 separator(),
                 filler()
             });
-        })
+        }),
+        [&](Event event) {
+            if (event.is_character()) {
+                *key = event.character()[0];
+            }
+            return true;
+        }
+        )
     });
 
     return menu_component;

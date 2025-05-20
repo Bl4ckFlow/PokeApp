@@ -25,6 +25,10 @@ class Tamer{
         int getSelectedPokemonIndex();
         void setSelectedPokemonIndex(int index);
         bool checkhp();
+
+        // Methods to reorder pokemons
+        void movePokemonUp(int index);
+        void movePokemonDown(int index);
 };
 
 class Player : public Tamer{
@@ -63,3 +67,4 @@ class MasterTamer : public Tamer{
     public : 
         MasterTamer(std::string name, std::string pokemon1, std::string pokemon2, std::string pokemon3, std::string pokemon4, std::string pokemon5, std::string pokemon6, std::vector<Pokemon> poke_list) ;
 };
+

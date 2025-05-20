@@ -505,12 +505,17 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/Cpp/learning/src/main
   /mnt/d/Programming/Cpp/learning/src/affichage/fightscreen.cpp \
   /mnt/d/Programming/Cpp/learning/src/affichage/menuscreen.cpp \
   /mnt/d/Programming/Cpp/learning/src/affichage/pokedec.cpp \
+  /mnt/d/Programming/Cpp/learning/src/affichage/statscreen.cpp \
   /mnt/d/Programming/Cpp/learning/src/affichage/username.cpp \
   /mnt/d/Programming/Cpp/learning/src/affichage/welcome.cpp \
   /mnt/d/Programming/Cpp/learning/src/load_func.cpp \
   /usr/include/alloca.h \
+  /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/int-ll64.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/types.h \
   /usr/include/c++/14/algorithm \
   /usr/include/c++/14/array \
   /usr/include/c++/14/atomic \
@@ -684,6 +689,10 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/Cpp/learning/src/main
   /usr/include/features.h \
   /usr/include/libintl.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/sched/types.h \
+  /usr/include/linux/stddef.h \
+  /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
@@ -779,7 +788,11 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/Cpp/learning/src/main
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h \
+  /usr/lib/linux/uapi/x86/asm/bitsperlong.h \
   /usr/lib/linux/uapi/x86/asm/errno.h \
+  /usr/lib/linux/uapi/x86/asm/posix_types.h \
+  /usr/lib/linux/uapi/x86/asm/posix_types_64.h \
+  /usr/lib/linux/uapi/x86/asm/types.h \
   /usr/local/include/ftxui/component/animation.hpp \
   /usr/local/include/ftxui/component/captured_mouse.hpp \
   /usr/local/include/ftxui/component/component.hpp \
@@ -895,6 +908,8 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 
 /usr/local/include/ftxui/component/captured_mouse.hpp:
 
+/usr/lib/linux/uapi/x86/asm/posix_types.h:
+
 /usr/include/x86_64-linux-gnu/c++/14/bits/time_members.h:
 
 /usr/include/x86_64-linux-gnu/c++/14/bits/messages_members.h:
@@ -904,6 +919,10 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-least.h:
+
+/usr/include/linux/types.h:
+
+/usr/include/linux/posix_types.h:
 
 /usr/include/c++/14/unordered_map:
 
@@ -921,6 +940,12 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 
 /usr/include/c++/14/istream:
 
+/usr/include/c++/14/iostream:
+
+/usr/include/c++/14/functional:
+
+/usr/include/c++/14/fstream:
+
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
@@ -931,19 +956,21 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 
 /usr/include/c++/14/bits/requires_hosted.h:
 
-/usr/include/c++/14/iostream:
-
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
+/usr/include/linux/stddef.h:
+
 /usr/include/c++/14/bits/stl_tempbuf.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/c++/14/pstl/pstl_config.h:
+
+/usr/include/linux/sched/types.h:
 
 /usr/include/c++/14/bits/std_abs.h:
 
@@ -982,6 +1009,8 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 /usr/include/ctype.h:
 
 /usr/include/c++/14/tuple:
+
+/usr/lib/linux/uapi/x86/asm/bitsperlong.h:
 
 /mnt/d/Programming/Cpp/learning/src/affichage/username.cpp:
 
@@ -1049,6 +1078,8 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 
 /usr/include/c++/14/bits/locale_facets.tcc:
 
+/usr/lib/linux/uapi/x86/asm/posix_types_64.h:
+
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h:
@@ -1060,6 +1091,8 @@ CMakeFiles/FrontEnd.dir/src/implementation/Pokemon.cpp.o:
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/stdc-predef.h:
+
+/usr/include/asm-generic/posix_types.h:
 
 /usr/include/c++/14/bits/invoke.h:
 
@@ -1119,11 +1152,15 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
+/usr/include/c++/14/limits:
+
+/usr/include/c++/14/iomanip:
+
+/usr/include/c++/14/bits/functional_hash.h:
+
 /usr/lib/x86_64-linux-gnu/crti.o:
 
 /usr/include/c++/14/bits/stl_heap.h:
-
-/usr/include/c++/14/functional:
 
 /usr/include/alloca.h:
 
@@ -1142,6 +1179,14 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 /usr/include/c++/14/bits/uses_allocator.h:
 
 /mnt/d/Programming/Cpp/learning/include/Type.hpp:
+
+/usr/lib/x86_64-linux-gnu/libm.so:
+
+/usr/local/include/ftxui/component/event.hpp:
+
+/usr/include/c++/14/ios:
+
+/usr/include/asm-generic/int-ll64.h:
 
 /usr/include/c++/14/type_traits:
 
@@ -1259,14 +1304,6 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
-/usr/include/c++/14/utility:
-
-/usr/include/c++/14/pstl/execution_defs.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
@@ -1298,12 +1335,6 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 /usr/include/c++/14/bits/basic_string.h:
 
 /usr/include/c++/14/bits/locale_facets.h:
-
-/usr/lib/x86_64-linux-gnu/libm.so:
-
-/usr/local/include/ftxui/component/event.hpp:
-
-/usr/include/c++/14/ios:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
@@ -1338,6 +1369,8 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/mnt/d/Programming/Cpp/learning/src/affichage/statscreen.cpp:
 
 /usr/include/c++/14/bits/shared_ptr.h:
 
@@ -1399,6 +1432,8 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
+/usr/lib/linux/uapi/x86/asm/types.h:
+
 /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h:
 
 /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h:
@@ -1432,6 +1467,18 @@ CMakeFiles/FrontEnd.dir/src/implementation/Entraineur.cpp.o:
 /mnt/d/Programming/Cpp/learning/src/affichage/welcome.cpp:
 
 /mnt/d/Programming/Cpp/learning/src/load_func.cpp:
+
+/usr/include/c++/14/utility:
+
+/usr/include/c++/14/pstl/execution_defs.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/asm-generic/bitsperlong.h:
 
 /usr/include/c++/14/array:
 
@@ -1504,11 +1551,3 @@ CMakeFiles/FrontEnd.dir/src/implementation/Type.cpp.o:
 /usr/include/c++/14/cwctype:
 
 /usr/include/c++/14/ext/concurrence.h:
-
-/usr/include/c++/14/fstream:
-
-/usr/include/c++/14/limits:
-
-/usr/include/c++/14/bits/functional_hash.h:
-
-/usr/include/c++/14/iomanip:

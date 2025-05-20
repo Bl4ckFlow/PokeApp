@@ -9,8 +9,7 @@ Tamer::Tamer(std::string name): name(name){
 
 void Tamer::setPokeList(std::vector<Pokemon> pokelist){
     liste_pokemon = pokelist;
-};
-
+}; 
 std::vector<Pokemon>& Tamer::getPokeList() { return liste_pokemon; }
 const std::vector<Pokemon>& Tamer::getPokeList() const { return liste_pokemon; }
 
@@ -37,6 +36,20 @@ bool Tamer::checkhp(){
     return false;
 }
 
+void Tamer::movePokemonUp(int index) {
+    if (index <= 0 || index >= static_cast<int>(liste_pokemon.size())) {
+        return; // Cannot move up
+    }
+    std::swap(liste_pokemon[index], liste_pokemon[index - 1]);
+}
+
+void Tamer::movePokemonDown(int index) {
+    if (index < 0 || index >= static_cast<int>(liste_pokemon.size()) - 1) {
+        return; // Cannot move down
+    }
+    std::swap(liste_pokemon[index], liste_pokemon[index + 1]);
+}
+
 //Player
 Player::Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu) : Tamer(name, liste), nombre_badges(nb), nombre_combats_gagnes(ncombat_gagnes), nombre_combats_perdus(ncombat_perdu){};
 
@@ -52,6 +65,8 @@ void Player::set_nombre_combats_gagnes(int v){
 void Player::set_nombre_combats_perdus(int v){
     nombre_combats_perdus++;
 };
+
+
 
 // Added getters for Player class
 int Player::get_nombre_badges() const {
@@ -98,3 +113,12 @@ MasterTamer::MasterTamer(std::string name, std::string pokemon1, std::string pok
     }
     this->setPokeList(customized_pokelist);
 };
+
+
+// Function
+void exchange(Player* t1, Tamer* t2){
+    std::vector<Pokemon>* t1_pokelist = &t1->getPokeList();
+    std::vector<Pokemon> t2_pokelist = t2->getPokeList();
+
+
+}

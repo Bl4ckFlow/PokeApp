@@ -83,6 +83,9 @@ int main(void) {
                         player.set_nombre_combats_gagnes(1);
                         player.setPokeList(selected_pokemon);
                         player.setSelectedPokemonIndex(0);
+                        /*
+                        Implementing how to take the other guys pokemon and ne
+                        */
                         i++;
                     }
                     if(player.checkhp()){
@@ -108,9 +111,31 @@ int main(void) {
             }
             screen.Exit();
         } else if (choice == 2) {
-            Component fight_screen = CreateStatScreen(player);
-            screen.Loop(fight_screen);
-            screen.Exit();
+            int selected_index = 0;
+            char* key;
+            
+            do{
+                Component stat_screen = CreateStatScreen(player, selected_index, key);
+                screen.Loop(stat_screen);
+
+                if(*key == 'z' && selected_index < player.getPokeList().size()){
+                    selected_index++;
+                }
+
+                if(*key == 's' && selected_index >0){
+                    selected_index--;
+                }
+
+                if(*key == 'e'){
+                    player.movePokemonUp(selected_index);
+                }
+
+                if(*key == 'd'){
+                    player.movePokemonDown(selected_index);
+                }
+            }
+            while (*key == 'z' || *key == 's' || *key == 'e' || *key == 'd');
+
         } else if (choice == 3) {
             
             screen.Exit();
