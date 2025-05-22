@@ -16,7 +16,7 @@ std::vector<MasterTamer> master_list = LoadMasterTamerFromCSV("maitres.csv", pok
 
 static int i = 0;
  
-#include <iostream>
+
 
 int main(void) {
 
@@ -83,9 +83,6 @@ int main(void) {
                         player.set_nombre_combats_gagnes(1);
                         player.setPokeList(selected_pokemon);
                         player.setSelectedPokemonIndex(0);
-                        /*
-                        Implementing how to take the other guys pokemon and ne
-                        */
                         i++;
                     }
                     if(player.checkhp()){
@@ -110,33 +107,41 @@ int main(void) {
 
             }
             screen.Exit();
-        } else if (choice == 2) {
+        } 
+        
+        else if (choice == 2) {
+            bool exit_stat_screen = false;
             int selected_index = 0;
-            char* key;
-            
-            do{
-                Component stat_screen = CreateStatScreen(player, selected_index, key);
+
+            auto stat_onKeyPressed = [&](int key_choice) {
+                switch (key_choice) {
+                    case 1: 
+                        // up
+                        break;
+                    case 2:
+                        // down
+                        break;
+                    case 3: 
+                        // move up
+                        break;
+                    case 4 :
+                        // move down
+                        break;
+                    case 0:
+                        exit_stat_screen = true;
+                        break;
+                    default:
+                        break;
+                }
+            };
+
+            while (!exit_stat_screen) {
+                Component stat_screen = CreateStatScreen(player, selected_index, stat_onKeyPressed);
                 screen.Loop(stat_screen);
-
-                if(*key == 'z' && selected_index < player.getPokeList().size()){
-                    selected_index++;
-                }
-
-                if(*key == 's' && selected_index >0){
-                    selected_index--;
-                }
-
-                if(*key == 'e'){
-                    player.movePokemonUp(selected_index);
-                }
-
-                if(*key == 'd'){
-                    player.movePokemonDown(selected_index);
-                }
             }
-            while (*key == 'z' || *key == 's' || *key == 'e' || *key == 'd');
-
-        } else if (choice == 3) {
+        } 
+        
+        else if (choice == 3) {
             
             screen.Exit();
         }

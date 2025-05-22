@@ -37,15 +37,15 @@ bool Tamer::checkhp(){
 }
 
 void Tamer::movePokemonUp(int index) {
-    if (index <= 0 || index >= static_cast<int>(liste_pokemon.size())) {
-        return; // Cannot move up
+    if (index < 1) {
+        return; 
     }
     std::swap(liste_pokemon[index], liste_pokemon[index - 1]);
 }
 
 void Tamer::movePokemonDown(int index) {
-    if (index < 0 || index >= static_cast<int>(liste_pokemon.size()) - 1) {
-        return; // Cannot move down
+    if (index >4) {
+        return; 
     }
     std::swap(liste_pokemon[index], liste_pokemon[index + 1]);
 }
