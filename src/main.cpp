@@ -4,6 +4,7 @@
 #include "./affichage/menuscreen.cpp"
 #include "./affichage/fightscreen.cpp"
 #include "./affichage/statscreen.cpp"
+#include "./affichage/fightschoicescreen.cpp"
 #include "../include/Entraineur.hpp"
 #include "./load_func.cpp"
 #include <iostream>
@@ -13,10 +14,7 @@ using namespace ftxui;
 std::vector<Pokemon> poke_list = LoadPokemonFromCSV("pokemon.csv");
 std::vector<GymLeader> leader_list = LoadGymLeaderFromCSV("leaders.csv", poke_list);
 std::vector<MasterTamer> master_list = LoadMasterTamerFromCSV("maitres.csv", poke_list);
-
-static int i = 0;
  
-
 
 int main(void) {
 
@@ -43,72 +41,168 @@ int main(void) {
     screen.Loop(poke_list_ui);
 
     Player player = Player(username, selected_pokemon, 0, 0, 0);
-    GymLeader* opponent  = &leader_list[0];
 
     player.setSelectedPokemonIndex(0);
-    opponent->setSelectedPokemonIndex(0);
-    std::vector<Pokemon> opponent_pokelist_backup = opponent->getPokeList();
     
     bool is_player_turn = true;
 
     int user_choice;
     auto onKeyPressed = [&](int choice) {
-        GymLeader* opponent  = &leader_list[i];
         user_choice = choice;
         if (choice == 1) {
+            int selected_index = 0;
+            bool exit_fight_choice = false;
+            bool opponent_selected = false;
+            Tamer* selected_tamer = nullptr;
 
-            bool fight_over = false;
-            
-            while (!fight_over) {
+            auto fight_onKeyPressed = [&](int index) {
+                switch (index) {
+                    case 10: 
+                        break;
 
+                    case 11:
+                        break;
 
-                std::vector<Pokemon>& player_pokemons = player.getPokeList();
-                std::vector<Pokemon>& opponent_pokemons = opponent->getPokeList();
+                    case -1:
+                        exit_fight_choice = true;
+                        screen.Exit();
+                        break;
+
+                    default:
+                        bool can_fight_master = playerHasAllBadges(player, leader_list);
                 
-                int player_index = player.getSelectedPokemonIndex();
-                int opponent_index = opponent->getSelectedPokemonIndex();
-
-                Component fight_screen = CreateFightScreen(player, *opponent, is_player_turn, player_pokemons, opponent_pokemons);
-                screen.Loop(fight_screen);
-                
-                if(is_player_turn){
-                    player_pokemons[player_index].attack(opponent_pokemons[opponent_index]);
-                }else{
-                    opponent_pokemons[opponent_index].attack(player_pokemons[player_index]);
+                        if (!can_fight_master) {
+                            if (index >= 0 && index < static_cast<int>(leader_list.size())) {
+                                selected_tamer = &leader_list[index];
+                                opponent_selected = true;
+                                screen.Exit();
+                            }
+                        } else {
+                            if (index >= 0 && index < static_cast<int>(master_list.size())) {
+                                selected_tamer = &master_list[index];
+                                opponent_selected = true;
+                                screen.Exit();
+                            }
+                        }
+                        break;
                 }
-                
-                if (player.checkhp() || opponent->checkhp()) {
-                    if(opponent->checkhp()){
-                        player.set_nombre_badges(opponent->getBadge());
-                        player.set_nombre_combats_gagnes(1);
-                        player.setPokeList(selected_pokemon);
-                        player.setSelectedPokemonIndex(0);
-                        i++;
+            };
+
+            auto fight_choice_pair = CreateFightChoiceScreen(player, leader_list, master_list, selected_index, fight_onKeyPressed);
+            Component fight_choice_component = fight_choice_pair.second;
+            screen.Loop(fight_choice_component);
+
+            if(!playerHasAllBadges(player, leader_list)){
+                if (opponent_selected && selected_tamer != nullptr) {
+                    GymLeader* selected_leader = dynamic_cast<GymLeader*>(selected_tamer);
+                    selected_leader->setSelectedPokemonIndex(0);
+                    std::vector<Pokemon> opponent_pokelist_backup = selected_leader->getPokeList();
+
+                    while (!exit_fight_choice) {
+                        std::vector<Pokemon>& player_pokemons = player.getPokeList();
+                        std::vector<Pokemon>& opponent_pokemons = selected_leader->getPokeList();
+                        
+                        int player_index = player.getSelectedPokemonIndex();
+                        int opponent_index = selected_leader->getSelectedPokemonIndex();
+
+                        Component fight_screen = CreateFightScreen(player, *selected_leader, is_player_turn, player_pokemons, opponent_pokemons);
+                        screen.Loop(fight_screen);
+                        
+                        if(is_player_turn){
+                            player_pokemons[player_index].attack(opponent_pokemons[opponent_index]);
+                        }else{
+                            opponent_pokemons[opponent_index].attack(player_pokemons[player_index]);
+                        }
+                        
+                        if (player.checkhp() || selected_leader->checkhp()) {
+                            if(selected_leader->checkhp()){
+                                player.set_nombre_badges(selected_leader->getBadge());
+                                player.set_nombre_combats_gagnes(1);
+                                player.setPokeList(selected_pokemon);
+                                player.setSelectedPokemonIndex(0);
+                                selected_leader->setPokeList(opponent_pokelist_backup);
+                                selected_leader->setSelectedPokemonIndex(0);
+                                is_player_turn = true;
+                            }
+                            if(player.checkhp()){
+                                player.set_nombre_combats_perdus(1);
+                                player.setPokeList(selected_pokemon);
+                                player.setSelectedPokemonIndex(0);
+                                selected_leader->setPokeList(opponent_pokelist_backup);
+                                selected_leader->setSelectedPokemonIndex(0);
+                                is_player_turn = true;
+                            }
+                            exit_fight_choice = true;
+                            break;
+                        }
+
+                        if (player_pokemons[player_index].get_hp() == 0) {
+                            player.setSelectedPokemonIndex(player_index + 1);
+                        }
+                        if (opponent_pokemons[opponent_index].get_hp() == 0) {
+                            selected_leader->setSelectedPokemonIndex(opponent_index + 1);
+                        }
+
+                        is_player_turn = !is_player_turn;
                     }
-                    if(player.checkhp()){
-                        player.set_nombre_combats_perdus(1);
-                        player.setPokeList(selected_pokemon);
-                        player.setSelectedPokemonIndex(0);
-                        opponent->setPokeList(opponent_pokelist_backup);
-                        opponent->setSelectedPokemonIndex(0);
+                }
+            }
+            else{
+                if (opponent_selected && selected_tamer != nullptr) {
+                    MasterTamer* selected_master = dynamic_cast<MasterTamer*>(selected_tamer);
+                    selected_master->setSelectedPokemonIndex(0);
+                    std::vector<Pokemon> opponent_pokelist_backup = selected_master->getPokeList();
+
+                    while (!exit_fight_choice) {
+                        std::vector<Pokemon>& player_pokemons = player.getPokeList();
+                        std::vector<Pokemon>& opponent_pokemons = selected_master->getPokeList();
+                        
+                        int player_index = player.getSelectedPokemonIndex();
+                        int opponent_index = selected_master->getSelectedPokemonIndex();
+
+                        Component fight_screen = CreateFightScreen(player, *selected_master, is_player_turn, player_pokemons, opponent_pokemons);
+                        screen.Loop(fight_screen);
+                        
+                        if(is_player_turn){
+                            player_pokemons[player_index].attack(opponent_pokemons[opponent_index]);
+                        }else{
+                            opponent_pokemons[opponent_index].attack(player_pokemons[player_index]);
+                        }
+                        
+                        if (player.checkhp() || selected_master->checkhp()) {
+                            if(selected_master->checkhp()){
+                                player.set_nombre_combats_gagnes(1);
+                                player.setPokeList(selected_pokemon);
+                                player.setSelectedPokemonIndex(0);
+                                selected_tamer->setPokeList(opponent_pokelist_backup);
+                                selected_tamer->setSelectedPokemonIndex(0);
+                                is_player_turn = true;
+                            }
+                            if(player.checkhp()){
+                                player.set_nombre_combats_perdus(1);
+                                player.setPokeList(selected_pokemon);
+                                player.setSelectedPokemonIndex(0);
+                                selected_tamer->setPokeList(opponent_pokelist_backup);
+                                selected_tamer->setSelectedPokemonIndex(0);
+                                is_player_turn = true;
+                            }
+                            exit_fight_choice = true;
+                            break;
+                        }
+
+                        if (player_pokemons[player_index].get_hp() == 0) {
+                            player.setSelectedPokemonIndex(player_index + 1);
+                        }
+                        if (opponent_pokemons[opponent_index].get_hp() == 0) {
+                            selected_master->setSelectedPokemonIndex(opponent_index + 1);
+                        }
+
+                        is_player_turn = !is_player_turn;
                     }
-                    fight_over = true;
-                    break;
                 }
-
-                if (player_pokemons[player_index].get_hp() == 0) {
-                    player.setSelectedPokemonIndex(player_index + 1);
-                }
-                if (opponent_pokemons[opponent_index].get_hp() == 0) {
-                    opponent->setSelectedPokemonIndex(opponent_index + 1);
-                }
-
-                is_player_turn = !is_player_turn;
-
             }
             screen.Exit();
-        } 
-        
+        }
         else if (choice == 2) {
             bool exit_stat_screen = false;
             int selected_index = 0;

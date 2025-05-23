@@ -496,6 +496,7 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/PokeApp/src/main.cpp 
   /mnt/d/Programming/PokeApp/include/Type.hpp \
   /mnt/d/Programming/PokeApp/include/Entraineur.hpp \
   /mnt/d/Programming/PokeApp/include/Pokemon.hpp \
+  /mnt/d/Programming/PokeApp/src/affichage/fightschoicescreen.cpp \
   /mnt/d/Programming/PokeApp/src/affichage/fightscreen.cpp \
   /mnt/d/Programming/PokeApp/src/affichage/menuscreen.cpp \
   /mnt/d/Programming/PokeApp/src/affichage/pokedec.cpp \
@@ -883,6 +884,8 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/PokeApp/src/main.cpp 
 /usr/include/c++/13/memory:
 
 /usr/include/c++/13/locale:
+
+/usr/include/c++/13/istream:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
@@ -1272,6 +1275,8 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/PokeApp/src/main.cpp 
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h:
 
+/mnt/d/Programming/PokeApp/src/affichage/fightschoicescreen.cpp:
+
 /usr/include/c++/13/ext/atomicity.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
@@ -1431,5 +1436,3 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: /mnt/d/Programming/PokeApp/src/main.cpp 
 /usr/include/c++/13/ios:
 
 /usr/include/c++/13/iostream:
-
-/usr/include/c++/13/istream:

@@ -54,8 +54,10 @@ void Tamer::movePokemonDown(int index) {
 Player::Player(std::string name, std::vector<Pokemon> liste, int nb, int ncombat_gagnes, int ncombat_perdu) : Tamer(name, liste), nombre_badges(nb), nombre_combats_gagnes(ncombat_gagnes), nombre_combats_perdus(ncombat_perdu){};
 
 void Player::set_nombre_badges(std::string badge){
-    nombre_badges++;
-    nom_badge.push_back(badge);
+    if(std::find(nom_badge.begin(), nom_badge.end(), badge) == nom_badge.end()){
+        nombre_badges++;
+        nom_badge.push_back(badge);
+    }
 };
 
 void Player::set_nombre_combats_gagnes(int v){

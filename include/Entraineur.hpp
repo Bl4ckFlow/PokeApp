@@ -14,7 +14,7 @@ class Tamer{
     public :
         Tamer(std::string name, std::vector<Pokemon> liste);
         Tamer(std::string name);
-
+        
         std::string getName() const;
         std::vector<Pokemon>& getPokeList();
         const std::vector<Pokemon>& getPokeList() const;
@@ -29,6 +29,8 @@ class Tamer{
         // Methods to reorder pokemons
         void movePokemonUp(int index);
         void movePokemonDown(int index);
+
+        virtual ~Tamer() = default;
 };
 
 class Player : public Tamer{

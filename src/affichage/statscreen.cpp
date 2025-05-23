@@ -78,7 +78,6 @@ Component CreateStatScreen(Player& player, int& selected_index, std::function<vo
         })
     });
 
-    // Attach event handler to the container
     stat_component |= CatchEvent([onKeyPressed, &selected_index, &player](Event event) {
         const int max_index = static_cast<int>(player.getPokeList().size()) - 1;
         if (event == Event::Character('z')) {
@@ -112,7 +111,7 @@ Component CreateStatScreen(Player& player, int& selected_index, std::function<vo
             return true;
         }
         else if (event == Event::Character('q')) {
-            onKeyPressed(0); // exit signal
+            onKeyPressed(0); // exit 
             return true;
         }
         else{

@@ -500,6 +500,7 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o
  /mnt/d/Programming/PokeApp/include/Type.hpp
  /mnt/d/Programming/PokeApp/include/Entraineur.hpp
  /mnt/d/Programming/PokeApp/include/Pokemon.hpp
+ /mnt/d/Programming/PokeApp/src/affichage/fightschoicescreen.cpp
  /mnt/d/Programming/PokeApp/src/affichage/fightscreen.cpp
  /mnt/d/Programming/PokeApp/src/affichage/menuscreen.cpp
  /mnt/d/Programming/PokeApp/src/affichage/pokedec.cpp

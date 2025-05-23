@@ -245,6 +245,7 @@ CMakeFiles/FrontEnd.dir/src/main.cpp.o: \
  /mnt/d/Programming/PokeApp/src/./affichage/fightscreen.cpp \
  /mnt/d/Programming/PokeApp/src/./affichage/../../include/Entraineur.hpp \
  /mnt/d/Programming/PokeApp/src/./affichage/statscreen.cpp \
+ /mnt/d/Programming/PokeApp/src/./affichage/fightschoicescreen.cpp \
  /mnt/d/Programming/PokeApp/src/./load_func.cpp \
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
